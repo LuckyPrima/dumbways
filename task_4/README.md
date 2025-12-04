@@ -1,30 +1,33 @@
-# Michael Jordan Biography Page
+# Portfolio & Project Showcase
 
-Halaman web sederhana dan responsif yang menampilkan biografi Michael Jordan. Dibangun menggunakan **HTML**, **Tailwind CSS**, dan **Font Awesome**, halaman ini menyajikan informasi biografi, tombol kontak, galeri foto, serta tautan sosial media dengan desain modern dan bersih.
+Halaman web responsif untuk showcase portfolio pribadi. Dibangun menggunakan **HTML**, **Tailwind CSS**, dan **Font Awesome**, aplikasi ini memungkinkan pengguna untuk menampilkan profil mereka, menambahkan proyek dengan gambar, dan menghubungi pembuat.
 
 ## 🚀 Features
 
-- **Biography Section**
-  Menampilkan teks biografi lengkap mengenai perjalanan karier Michael Jordan, mulai dari awal karier hingga pencapaiannya sebagai ikon dunia olahraga dan bisnis.
+- **Home Page (index.html)**
+  Menampilkan halaman utama dengan profil pribadi, bio singkat, dan link navigasi ke halaman lainnya.
 
-- **Contact Button**
-  Tombol aksi cepat untuk menghubungi pembuat melalui email. Dibuat dengan styling Tailwind dan efek hover.
+- **My Projects Page (my-project.html)**
+  Form interaktif untuk menambahkan proyek baru dengan fitur:
+  - Input nama proyek (Project Name)
+  - Tanggal mulai dan selesai (Start/End Date)
+  - Deskripsi proyek lengkap
+  - Pilihan bahasa pemrograman (JavaScript, TypeScript, C++, Golang)
+  - Upload gambar proyek
+  - Real-time preview gambar dengan FileReader API
+  - Kartu proyek otomatis yang menampilkan image, judul, dan deskripsi
+  
+  Setiap kartu proyek menampilkan:
+  - Gambar preview dari file yang diupload
+  - Judul proyek
+  - Deskripsi proyek
+  - Tanggal dan bahasa pemrograman
 
-- **Download Section**
-  Elemen interaktif dengan ikon download (Font Awesome), dapat dikembangkan untuk mengunduh file biografi dalam bentuk PDF.
+- **Contact Page (contact-me.html)**
+  Halaman untuk menghubungi pembuat dengan form kontak atau tautan sosial media.
 
-- **Social Media Icons**
-  Tautan ke akun LinkedIn, Instagram, dan GitHub pemilik project.
-  Menggunakan ikon Font Awesome dengan style rounded dan efek hover.
-
-- **Image Gallery**
-  Tiga kartu gambar yang menampilkan momen ikonik Michael Jordan:
-
-  - Champion Era
-  - Air Jordan Legacy
-  - Last Dance
-
-  Setiap card memiliki animasi **hover scale**, shadow, dan layout responsif.
+- **Responsive Navigation**
+  Menu navigasi tetap di atas (sticky navbar) dengan link ke Home, My Project, dan Contact Me.
 
 ## 🛠️ Tech Stack
 
@@ -38,13 +41,13 @@ Halaman web sederhana dan responsif yang menampilkan biografi Michael Jordan. Di
 
 ```
 /
-├── index.html          # Halaman utama
-├── contact-me.html     # Halaman utama
+├── index.html          # Halaman utama (Home)
+├── my-project.html     # Halaman form tambah proyek & showcase
+├── contact-me.html     # Halaman kontak
 ├── global.css          # Custom font utilities (Poppins)
-├── public
-│   ├── michael-jordan-celebrates-archive-1568x882.jpg
-│   ├── vibe-MJ-Branding.jpg
-│   └── fern-story-1_0.jpg
+├── utils/
+│   └── index.js        # Script untuk form handling & project card generation
+├── public/             # Folder untuk menyimpan gambar/aset
 └── README.md           # Dokumentasi proyek
 ```
 
@@ -54,15 +57,26 @@ Halaman web sederhana dan responsif yang menampilkan biografi Michael Jordan. Di
 
 ```
 git clone https://github.com/LuckyPrima/dumbways.git
+cd task_4
 ```
 
-2. Pastikan semua gambar berada di dalam folder `/public`.
-
-3. Jalankan langsung file berikut di browser:
+2. Buka file berikut di browser:
 
 ```
 index.html
 ```
+
+Atau gunakan Live Server di VS Code untuk development lebih baik.
+
+3. **Untuk menambah proyek:**
+   - Klik menu "My Project" di navbar
+   - Isi form dengan nama proyek, tanggal, deskripsi, bahasa, dan upload gambar
+   - Klik "submit"
+   - Proyek akan langsung muncul di kartu bawah form
+
+4. **Untuk kontak:**
+   - Klik menu "Contact Me" di navbar
+   - Isi form kontak atau gunakan tautan sosial media
 
 Tidak memerlukan server atau proses build tambahan.
 
@@ -70,11 +84,14 @@ Tidak memerlukan server atau proses build tambahan.
 
 Anda dapat melakukan penyesuaian berikut:
 
-- Mengubah warna tema Tailwind
-- Menambah atau mengganti gambar galeri
-- Menambahkan section baru seperti: Achievements, Career Timeline, atau Video Highlights
+- Mengubah warna tema Tailwind di HTML files
+- Menambah lebih banyak bahasa pemrograman di dropdown `#language`
+- Mengubah styling kartu proyek di `utils/index.js` (fungsi `buildCard`)
+- Menambah validasi form (ukuran file, tipe file, dll)
+- Menambahkan fitur localStorage untuk persist data antar session
+- Menambahkan fitur edit/delete proyek
 - Mengganti font atau icon pack
-- Menambahkan fungsi download PDF pada bagian "Download Biography"
+- Menambahkan section atau halaman baru
 
 Tailwind CSS membuat penyesuaian sangat cepat dan fleksibel.
 
