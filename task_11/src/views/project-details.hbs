@@ -1,0 +1,136 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{project.title}} - Project Details</title>
+
+    <link rel="stylesheet" href="../style/global.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-slate-100 min-h-screen poppins-regular"
+    data-start="{{project.startDate}}"
+    data-end="{{project.endDate}}"
+  >
+    <!-- ====================================================== -->
+    <!--                         NAVBAR                         -->
+    <!-- ====================================================== -->
+    <nav
+      class="bg-white shadow-md py-4 px-6 flex items-center justify-between fixed top-0 left-0 w-full z-50"
+    >
+      <div class="flex items-center gap-3">
+        <a href="/home" class="cursor-pointer">
+          <img
+            src="https://avatars3.githubusercontent.com/u/34464790?s=220&v=4"
+            alt="logo"
+            class="w-12"
+          />
+        </a>
+        <div class="hidden md:flex gap-6 text-gray-700 text-lg">
+          <a href="/home" class="hover:text-black">Home</a>
+          <a href="/myproject" class="hover:text-black">My Project</a>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <a
+        href="/contactme"
+        class="bg-slate-900 hover:bg-slate-700 text-white text-sm md:text-base px-5 py-2 rounded-full shadow"
+      >
+        Contact Me
+      </a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="pt-24 pb-12 px-6">
+      <div class="max-w-4xl mx-auto">
+
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <!-- Image -->
+          <img
+            src="{{project.imageSrc}}"
+            alt="{{project.title}}"
+            class="w-full h-96 object-cover"
+          />
+
+          <!-- Content -->
+          <div class="p-8">
+            <!-- Title -->
+            <h1 class="text-4xl font-bold mb-2">{{project.title}}</h1>
+
+            <!-- Meta Info -->
+            <div class="flex flex-wrap gap-4 mb-6 text-gray-600">
+              <span class="flex items-center gap-2">
+                <i class="fa-solid fa-calendar"></i>
+                {{project.startDate}}
+                -
+                {{project.endDate}}
+              </span>
+              <span class="flex items-center gap-2">
+                <i class="fa-solid fa-code"></i>
+                {{project.language}}
+              </span>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-semibold mb-4">Description</h2>
+              <p
+                class="text-gray-700 text-lg leading-relaxed whitespace-pre-line"
+              >
+                {{project.description}}
+              </p>
+            </div>
+
+            <!-- Duration -->
+            <div class="bg-slate-50 p-4 rounded-lg mb-8">
+              <h3 class="font-semibold text-lg mb-2">Project Duration</h3>
+              <p id="durationText" class="text-gray-700"></p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-4">
+              <a
+                href="/edit-project/{{project.id}}"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold transition"
+              >
+                <i class="fa-solid fa-edit"></i>
+                Edit Project
+              </a>
+              <button
+                onclick="deleteProject('{{project.id}}')"
+                class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+              >
+                <i class="fa-solid fa-trash"></i>
+                Delete Project
+              </button>
+              <a
+                href="/myproject"
+                class="bg-slate-500 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-semibold transition"
+              >
+                <i class="fa-solid fa-arrow-left"></i>
+                Back
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/project-details.js"></script>
+  </body>
+</html>
