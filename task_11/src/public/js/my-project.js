@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const language = document.getElementById("language").value;
     const file = document.getElementById("uploadImage").files[0];
 
+    //validation image size
+    const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+
+    if (file && file.size > MAX_FILE_SIZE) {
+      alert("Image size must be less than 2MB");
+      return;
+    }
+
     const newProject = {
       title,
       startDate,
@@ -56,9 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Filter by language
   filterLanguage.addEventListener("change", () => {
     const selectedLanguage = filterLanguage.value;
-    const cards = document.querySelectorAll(
-      "[data-language]"
-    );
+    const cards = document.querySelectorAll("[data-language]");
 
     if (selectedLanguage === "") {
       cards.forEach((card) => (card.style.display = "block"));

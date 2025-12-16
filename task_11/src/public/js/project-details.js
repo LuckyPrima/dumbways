@@ -23,3 +23,22 @@ function calculateDuration(start, end) {
     ? `${months} months`
     : `${months} months ${remaining} days`;
 }
+
+window.deleteProject = (id) => {
+  if (!confirm("Are you sure you want to delete this project?")) return;
+
+  fetch(`/api/projects/${id}`, {
+    method: "DELETE",
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to delete project");
+      return res.json();
+    })
+    .then(() => {
+      window.location.href = "/myproject";
+    })
+    .catch((err) => {
+      console.error("Error:", err);
+      alert("Failed to delete project");
+    });
+};
