@@ -6,13 +6,14 @@ import {
   updateProject,
   deleteProject,
 } from "../controller/project.controller.js";
+import { requireAuth } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/projects", getAllProjects);
-router.get("/projects/:id", getProjectById);
-router.post("/projects", createProject);
-router.put("/projects/:id", updateProject);
-router.delete("/projects/:id", deleteProject);
+router.get("/projects", requireAuth, getAllProjects);
+router.get("/projects/:id", requireAuth, getProjectById);
+router.post("/projects", requireAuth, createProject);
+router.put("/projects/:id", requireAuth, updateProject);
+router.delete("/projects/:id", requireAuth, deleteProject);
 
 export default router;
