@@ -1,4 +1,4 @@
-# Task 11 - Portfolio Website dengan Express, PostgreSQL & Node-PG
+# Task 13 - Portfolio Website dengan Express, PostgreSQL & Node-PG
 
 Proyek aplikasi web portfolio untuk menampilkan dan mengelola project-project Anda menggunakan Express.js dengan database PostgreSQL dan node-pg. Proyek ini dikembangkan sebagai bagian dari latihan bootcamp DumbWays.
 
