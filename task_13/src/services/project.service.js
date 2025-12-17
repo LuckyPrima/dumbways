@@ -16,19 +16,6 @@ const mapProject = (row) => ({
   imageSrc: row.image_src,
 });
 
-const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB (approx)
-
-const isBase64DataUrl = (s) =>
-  typeof s === "string" && /^data:image\/[a-zA-Z]+;base64,/.test(s);
-
-const isBase64TooLarge = (base64) => {
-  const sizeInBytes =
-    (base64.length * 3) / 4 -
-    (base64.endsWith("==") ? 2 : base64.endsWith("=") ? 1 : 0);
-
-  return sizeInBytes > MAX_IMAGE_SIZE;
-};
-
 export const getAll = async () => {
   const rows = await repo.findAll();
   return rows.map(mapProject);
@@ -40,10 +27,6 @@ export const getById = async (id) => {
 };
 
 export const create = (data) => {
-  if (isBase64DataUrl(data.imageSrc) && isBase64TooLarge(data.imageSrc)) {
-    throw new Error("Image size exceeds 2MB limit");
-  }
-
   return repo.create({
     id: crypto.randomUUID(),
     ...data,
@@ -53,10 +36,6 @@ export const create = (data) => {
 };
 
 export const update = (id, data) => {
-  if (isBase64DataUrl(data.imageSrc) && isBase64TooLarge(data.imageSrc)) {
-    throw new Error("Image size exceeds 2MB limit");
-  }
-
   return repo.update(id, data);
 };
 
